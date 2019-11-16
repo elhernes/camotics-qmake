@@ -1,0 +1,9 @@
+[submodule "CAMotics"]
+	path = CAMotics
+	url = git@github.com:elhernes/CAMotics.git
+[submodule "cbang"]
+	path = cbang
+	url = git@github.com:elhernes/cbang.git
+[submodule "ChakraCore"]
+	path = ChakraCore
+	url = git@github.com:elhernes/ChakraCore.git
