@@ -4,6 +4,3 @@
 [submodule "cbang"]
 	path = cbang
 	url = git@github.com:elhernes/cbang.git
-[submodule "ChakraCore"]
-	path = ChakraCore
-	url = git@github.com:elhernes/ChakraCore.git
