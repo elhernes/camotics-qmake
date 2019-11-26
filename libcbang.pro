@@ -4,14 +4,17 @@ TARGET=cbang
 TEMPLATE=lib
 CONFIG += staticlib object_parallel_to_source 
 DEFINES = USING_CBANG HAVE_MEMMOVE
+
+V8=$${PWD}/../../javascript/ns-v8ios-runtime/v8
+
 INCLUDEPATH = $${PWD}/config \
     $${PWD}/cbang/src \
     $${PWD}/cbang/src/boost \
     $${PWD}/cbang/src/libyaml/src \
     $${PWD}/cbang/src/expat \
-    $${PWD}/ChakraCore/lib/Jsrt \
     $${PWD}/cbang/src/libevent/include \
-    $${PWD}/cbang/src/re2/src
+    $${PWD}/cbang/src/re2/src \
+    $${V8}/include
 
 OBJECTS_DIR=lib$${TARGET}
 
@@ -29,7 +32,7 @@ CBANG_CONFIG += event
 #CBANG_CONFIG += http
 CBANG_CONFIG += io
 CBANG_CONFIG += iostream
-CBANG_CONFIG += js
+CBANG_CONFIG += js v8
 CBANG_CONFIG += json
 CBANG_CONFIG += log
 CBANG_CONFIG += net
@@ -227,16 +230,20 @@ contains(CBANG_CONFIG, iostream) {
 }
 
 contains(CBANG_CONFIG, js) {
-    #SOURCES += $${PWD}/cbang/src/cbang/js/v8/Factory.cpp
-    #SOURCES += $${PWD}/cbang/src/cbang/js/v8/JSImpl.cpp
-    #SOURCES += $${PWD}/cbang/src/cbang/js/v8/Value.cpp
-    #SOURCES += $${PWD}/cbang/src/cbang/js/v8/Context.cpp
+    contains(CBANG_CONFIG, v8) {
+        SOURCES += $${PWD}/cbang/src/cbang/js/v8/Factory.cpp
+        SOURCES += $${PWD}/cbang/src/cbang/js/v8/JSImpl.cpp
+        SOURCES += $${PWD}/cbang/src/cbang/js/v8/Value.cpp
+        SOURCES += $${PWD}/cbang/src/cbang/js/v8/Context.cpp
+    }
+    contains(CBANG_CONFIG, chakra) {
+        SOURCES += $${PWD}/cbang/src/cbang/js/chakra/Factory.cpp
+        SOURCES += $${PWD}/cbang/src/cbang/js/chakra/JSImpl.cpp
+        SOURCES += $${PWD}/cbang/src/cbang/js/chakra/Value.cpp
+        SOURCES += $${PWD}/cbang/src/cbang/js/chakra/Context.cpp
+        SOURCES += $${PWD}/cbang/src/cbang/js/chakra/ValueRef.cpp
+    }
     SOURCES += $${PWD}/cbang/src/cbang/js/Javascript.cpp
-    SOURCES += $${PWD}/cbang/src/cbang/js/chakra/Factory.cpp
-    SOURCES += $${PWD}/cbang/src/cbang/js/chakra/JSImpl.cpp
-    SOURCES += $${PWD}/cbang/src/cbang/js/chakra/Value.cpp
-    SOURCES += $${PWD}/cbang/src/cbang/js/chakra/Context.cpp
-    SOURCES += $${PWD}/cbang/src/cbang/js/chakra/ValueRef.cpp
     SOURCES += $${PWD}/cbang/src/cbang/js/ConsoleModule.cpp
     SOURCES += $${PWD}/cbang/src/cbang/js/Value.cpp
     SOURCES += $${PWD}/cbang/src/cbang/js/Sink.cpp

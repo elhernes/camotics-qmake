@@ -44,7 +44,6 @@ SOURCES += $${PWD}/CAMotics/src/gcode/parse/Parser.cpp
 SOURCES += $${PWD}/CAMotics/src/gcode/parse/Tokenizer.cpp
 SOURCES += $${PWD}/CAMotics/src/gcode/ToolPath.cpp
 SOURCES += $${PWD}/CAMotics/src/gcode/ToolShape.cpp
-SOURCES += $${PWD}/CAMotics/src/gcode/machine/Machine.cpp
 SOURCES += $${PWD}/CAMotics/src/gcode/machine/MachineEnum.cpp
 SOURCES += $${PWD}/CAMotics/src/gcode/machine/Transform.cpp
 SOURCES += $${PWD}/CAMotics/src/gcode/machine/JSONMachine.cpp
