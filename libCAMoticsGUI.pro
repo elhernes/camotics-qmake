@@ -1,19 +1,12 @@
 
 TARGET=CAMoticsGUI
+TEMPLATE=lib
+
+include(common.pri)
 
 QT += widgets opengl network
 
-TEMPLATE=lib
-CONFIG+=staticlib
-DEFINES = USING_CBANG CAMOTICS_GUI
-INCLUDEPATH = \
-    $${PWD}/cbang/src \
-    $${PWD}/cbang/src/boost \
-    $${PWD}/CAMotics/src
-    
-OBJECTS_DIR=lib$${TARGET}
-UI_DIR=lib$${TARGET}
-MOC_DIR=lib$${TARGET}
+DEFINES += CAMOTICS_GUI
 
 FORMS += $${PWD}/CAMotics/qt/new_dialog.ui
 FORMS += $${PWD}/CAMotics/qt/donate_dialog.ui

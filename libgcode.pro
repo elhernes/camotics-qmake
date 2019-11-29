@@ -1,11 +1,8 @@
 
 TARGET=gcode
-
 TEMPLATE=lib
-CONFIG+=staticlib
-DEFINES = USING_CBANG
-INCLUDEPATH = $${PWD}/cbang/src $${PWD}/cbang/src/boost $${PWD}/CAMotics/src
-OBJECTS_DIR=lib$${TARGET}
+
+include(common.pri)
 
 SOURCES += $${PWD}/CAMotics/src/gcode/Codes.cpp
 SOURCES += $${PWD}/CAMotics/src/gcode/ToolTable.cpp
@@ -56,7 +53,7 @@ SOURCES += $${PWD}/CAMotics/src/gcode/machine/MoveSink.cpp
 SOURCES += $${PWD}/CAMotics/src/gcode/machine/MachineUnitAdapter.cpp
 SOURCES += $${PWD}/CAMotics/src/gcode/machine/MachineLinearizer.cpp
 SOURCES += $${PWD}/CAMotics/src/gcode/machine/PortType.cpp
-#SOURCES += $${PWD}/CAMotics/src/gcode/machine/DynaMachine.cpp
+SOURCES += $${PWD}/CAMotics/src/gcode/machine/DynaMachine.cpp
 SOURCES += $${PWD}/CAMotics/src/gcode/machine/TransformStack.cpp
 SOURCES += $${PWD}/CAMotics/src/gcode/Tool.cpp
 SOURCES += $${PWD}/CAMotics/src/gcode/ast/Operator.cpp

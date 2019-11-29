@@ -1,28 +1,15 @@
 
 TARGET=CAMotics
 
-CONFIG+=object_parallel_to_source
+include(common.pri)
 
 QT += widgets opengl network websockets
 
-V8=$${PWD}/../../javascript/ns-v8ios-runtime/v8
-V8_LIB=$${V8}/out.gn/x64-release/lib
-V8_LIBS=-ltorque_generated_initializers \
-    -lv8_libbase \
-    -lv8_base_without_compiler \
-    -lv8_libplatform \
-    -lv8_compiler \
-    -lv8_libsampler \
-    -lv8_init \
-    -lv8_snapshot \
-    -lv8_initializers
-
-DEFINES = USING_CBANG
-
-INCLUDEPATH = $${PWD}/config $${PWD}/cbang/src $${PWD}/cbang/src/boost $${PWD}/CAMotics/src $${V8}/include
-OBJECTS_DIR=$${TARGET}
+INCLUDEPATH += $${PWD}/config $${V8}/include
 
 LIBS= -L$${OUT_PWD} -lgcode -ltplang -ldxf -lcbang -lCAMotics -lCAMoticsGUI -lstl -lcairo -lclipper -L$${V8_LIB} $${V8_LIBS}
+LIBS += -framework IOKit
+LIBS += -framework CoreFoundation
 
 SOURCES += $${PWD}/CAMotics/src/camotics.cpp
 SOURCES += $${PWD}/config/camotics/resources.cpp
@@ -31,7 +18,6 @@ SOURCES += $${PWD}/config/camotics/resources.data/data3.cpp
 
 ICON = $${PWD}/CAMotics/osx/camotics.icns
 #QMAKE_INFO_PLIST = $${PWD}/CAMotics/osx/pkg.plist
-
 
 RESOURCE_FILES.files = $$ICON
 QMAKE_BUNDLE_DATA += RESOURCE_FILES
@@ -48,7 +34,7 @@ macx {
 }
 
 tpl_lib.files = $${PWD}/CAMotics/tpl_lib
-#tpl_lib.path = $${D}
+tpl_lib.path = Contents/Resources
 
 machines.files = CAMotics/machines
 machines.path = $${D}

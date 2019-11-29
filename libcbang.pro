@@ -1,22 +1,17 @@
 
 TARGET=cbang
-
 TEMPLATE=lib
-CONFIG += staticlib object_parallel_to_source 
-DEFINES = USING_CBANG HAVE_MEMMOVE
 
-V8=$${PWD}/../../javascript/ns-v8ios-runtime/v8
+include(common.pri)
 
-INCLUDEPATH = $${PWD}/config \
-    $${PWD}/cbang/src \
-    $${PWD}/cbang/src/boost \
+DEFINES += HAVE_MEMMOVE
+
+INCLUDEPATH += $${PWD}/config \
     $${PWD}/cbang/src/libyaml/src \
     $${PWD}/cbang/src/expat \
     $${PWD}/cbang/src/libevent/include \
     $${PWD}/cbang/src/re2/src \
     $${V8}/include
-
-OBJECTS_DIR=lib$${TARGET}
 
 ## QMAKE_CXXFLAGS += -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/SystemConfiguration.framework
 
@@ -340,7 +335,7 @@ contains(CBANG_CONFIG, os) {
     SOURCES += $${PWD}/cbang/src/cbang/os/RWLock.cpp
     #SOURCES += $${PWD}/cbang/src/cbang/os/Win32Registry.cpp
     SOURCES += $${PWD}/cbang/src/cbang/os/Semaphore.cpp
-#    SOURCES += $${PWD}/cbang/src/cbang/os/PowerManagement.cpp
+    SOURCES += $${PWD}/cbang/src/cbang/os/PowerManagement.cpp
     SOURCES += $${PWD}/cbang/src/cbang/os/Condition.cpp
     SOURCES += $${PWD}/cbang/src/cbang/os/Glob.cpp
     SOURCES += $${PWD}/cbang/src/cbang/os/ProcessLock.cpp

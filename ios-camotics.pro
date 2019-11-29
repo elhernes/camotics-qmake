@@ -13,8 +13,11 @@ libs+= libCAMoticsGUI.pro
 
 SUBDIRS += $${libs}
 
-#SUBDIRS+= tplang.pro
+macx {
+    SUBDIRS+= tplang.pro
+    tplang.pro.depends = $${libs}
+}
+
 SUBDIRS+= CAMotics.pro
 
-#tplang.pro.depends = $${libs}
 CAMotics.pro.depends = $${libs}

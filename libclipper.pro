@@ -1,11 +1,8 @@
 
 TARGET=clipper
-
 TEMPLATE=lib
-CONFIG+=staticlib
-DEFINES = USING_CBANG
-INCLUDEPATH = $${PWD}/cbang/src $${PWD}/cbang/src/boost $${PWD}/CAMotics/src
-OBJECTS_DIR=lib$${TARGET}
+
+include(common.pri)
 
 SOURCES+= $${PWD}/CAMotics/src/clipper/IntersectNode.cpp
 SOURCES+= $${PWD}/CAMotics/src/clipper/ClipperBase.cpp

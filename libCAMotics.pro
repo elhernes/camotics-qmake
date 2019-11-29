@@ -1,12 +1,11 @@
 
 TARGET=CAMotics
-
 TEMPLATE=lib
-CONFIG+=object_parallel_to_source staticlib
+CONFIG+=staticlib
 
-DEFINES = USING_CBANG CAMOTICS_GUI
-INCLUDEPATH = $${PWD}/cbang/src $${PWD}/cbang/src/boost $${PWD}/CAMotics/src
-OBJECTS_DIR=lib$${TARGET}
+include(common.pri)
+
+DEFINES += CAMOTICS_GUI
 
 SOURCES += $${PWD}/config/camotics/build_info.cpp
 

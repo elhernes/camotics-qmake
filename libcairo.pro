@@ -1,11 +1,10 @@
 
 TARGET=cairo
-
 TEMPLATE=lib
-CONFIG+=staticlib
+include(common.pri)
+
 INCLUDEPATH = $${PWD}/CAMotics/src/cairo $${PWD}
 DEFINES = HAVE_STDINT_H HAVE_PTHREAD_H CAIRO_NO_MUTEX HAVE_INTTYPES_H CAIRO_HAS_IMAGE_SURFACE
-OBJECTS_DIR=lib$${TARGET}
 
 SOURCES += $${PWD}/CAMotics/src/cairo/cairo-image-surface.c
 SOURCES += $${PWD}/CAMotics/src/cairo/cairo-font-options.c
