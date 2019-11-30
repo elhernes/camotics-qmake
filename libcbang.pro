@@ -335,7 +335,10 @@ contains(CBANG_CONFIG, os) {
     SOURCES += $${PWD}/cbang/src/cbang/os/RWLock.cpp
     #SOURCES += $${PWD}/cbang/src/cbang/os/Win32Registry.cpp
     SOURCES += $${PWD}/cbang/src/cbang/os/Semaphore.cpp
-    SOURCES += $${PWD}/cbang/src/cbang/os/PowerManagement.cpp
+    !ios{
+	DEFINES += WITH_POWER_MANAGEMENT
+	SOURCES += $${PWD}/cbang/src/cbang/os/PowerManagement.cpp
+    }
     SOURCES += $${PWD}/cbang/src/cbang/os/Condition.cpp
     SOURCES += $${PWD}/cbang/src/cbang/os/Glob.cpp
     SOURCES += $${PWD}/cbang/src/cbang/os/ProcessLock.cpp

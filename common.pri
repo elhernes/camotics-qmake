@@ -20,6 +20,7 @@ INCLUDEPATH = $${PWD}/cbang/src $${PWD}/cbang/src/boost $${PWD}/CAMotics/src
 V8=$${PWD}/v8
 macx {
     V8_LIB=$${V8}/out.gn/x64.macx/lib
+#    V8_LIB=$${V8}/out.gn/x64.macx_debug/obj
 }
 ios {
 #    V8_LIB=$${V8}/out.gn/arm64.ios/lib
@@ -31,8 +32,15 @@ V8_LIBS=-ltorque_generated_initializers \
     -lv8_libsampler \
     -lv8_init \
     -lv8_snapshot \
-    -lv8_initializers \
-    -lv8_base
+    -lv8_initializers
+
+# for v8 v6.8
+#V8_LIBS+= -lv8_base
 
 V8_COMPILER_LIBS= -lv8_compiler \
     -lv8_base_without_compiler
+
+V8_LIBS+=$${V8_COMPILER_LIBS}
+macx {
+    V8_LIBS+=-lv8_z
+}
