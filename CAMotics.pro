@@ -5,9 +5,16 @@ include(common.pri)
 
 QT += widgets opengl network websockets
 
-INCLUDEPATH += $${PWD}/config $${V8}/include
+INCLUDEPATH += $${PWD}/config
 
-LIBS= -L$${OUT_PWD} -lgcode -ltplang -ldxf -lcbang -lCAMotics -lCAMoticsGUI -lstl -lcairo -lclipper -L$${V8_LIB} $${V8_LIBS}
+LIBS= -L$${OUT_PWD} -lgcode -ltplang -ldxf -lcbang -lCAMotics -lCAMoticsGUI -lstl -lcairo -lclipper
+
+#INCLUDEPATH += $${V8_INC}
+#LIBS+= -L$${V8_LIB} $${V8_LIBS}
+
+#INCLUDEPATH += $${CHAKRA_INC}
+LIBS+=$${CHAKRA_LIB}
+
 LIBS += -framework IOKit
 LIBS += -framework CoreFoundation
 
@@ -34,7 +41,7 @@ macx {
 }
 
 tpl_lib.files = $${PWD}/CAMotics/tpl_lib
-tpl_lib.path = Contents/Resources
+tpl_lib.path = 
 
 machines.files = CAMotics/machines
 machines.path = $${D}

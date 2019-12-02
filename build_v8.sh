@@ -8,7 +8,7 @@ PATH=${PATH}:${PWD}/depot_tools
 
 if [ ! -d v8 ]; then
     fetch v8
-    (cd v8; git checkout branch-heads/7.8; gclient sync)
+    (cd v8; git checkout branch-heads/6.8; gclient sync)
 fi
 
 #IOS_ARCH=(x64 arm64)

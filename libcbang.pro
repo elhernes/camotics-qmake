@@ -11,7 +11,8 @@ INCLUDEPATH += $${PWD}/config \
     $${PWD}/cbang/src/expat \
     $${PWD}/cbang/src/libevent/include \
     $${PWD}/cbang/src/re2/src \
-    $${V8}/include
+    $${V8_INC} \
+    $${CHAKRA_INC}
 
 ## QMAKE_CXXFLAGS += -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/SystemConfiguration.framework
 
@@ -27,7 +28,7 @@ CBANG_CONFIG += event
 #CBANG_CONFIG += http
 CBANG_CONFIG += io
 CBANG_CONFIG += iostream
-CBANG_CONFIG += js v8
+CBANG_CONFIG += js chakra
 CBANG_CONFIG += json
 CBANG_CONFIG += log
 CBANG_CONFIG += net

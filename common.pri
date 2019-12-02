@@ -18,6 +18,8 @@ CONFIG+=debug
 INCLUDEPATH = $${PWD}/cbang/src $${PWD}/cbang/src/boost $${PWD}/CAMotics/src
 
 V8=$${PWD}/v8
+V8_INC=$${V8}/include
+
 macx {
     V8_LIB=$${V8}/out.gn/x64.macx/lib
 #    V8_LIB=$${V8}/out.gn/x64.macx_debug/obj
@@ -44,3 +46,10 @@ V8_LIBS+=$${V8_COMPILER_LIBS}
 macx {
     V8_LIBS+=-lv8_z
 }
+
+
+CHAKRA_INC=/Volumes/Users/eric/work/javascript/nodejs-mobile/deps/chakrashim/include
+CHAKRA_LIB=/Volumes/Users/eric/work/javascript/nodejs-mobile/tools/ios-framework/bin/libChakraCoreStatic.a
+
+#CHAKRA_INC=$${OUT_PWD}/ChakraCore/Release/include
+#CHAKRA_LIB=$${OUT_PWD}/ChakraCore/Release/lib/libChakraCoreStatic.a

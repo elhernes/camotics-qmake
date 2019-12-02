@@ -3,4 +3,5 @@
 
 #define HAVE_LIBSQLITE
 #define HAVE_PTHREADS
-#define HAVE_V8
+#define HAVE_CHAKRA
+//#define HAVE_V8
